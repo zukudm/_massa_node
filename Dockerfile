@@ -22,10 +22,10 @@ WORKDIR "/root//root/massa/massa-node/"
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--"]
+ENTRYPOINT ["/tini", "--","/root/massa/massa-node/massa-node"]
 
 
-CMD []
+#CMD []
 
 
 
