@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 
 
-RUN chmod +x /sbin/tini
+
 
 ARG ARTIFACT_BIN
 ARG ARTIFACT_LINK
