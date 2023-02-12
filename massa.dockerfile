@@ -1,0 +1,16 @@
+FROM alpine:3.14
+
+ARG ARTIFACT_BIN
+ARG ARTIFACT_LINK
+ARG INSTALL_DIR="/root"
+
+
+
+RUN WGET  $ARTIFACT_LINK  && tar -zxvf $ARTIFACT_BIN --directory $INSTALL_DIR
+
+
+
+
+
+
+
