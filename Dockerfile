@@ -1,6 +1,6 @@
-FROM alpine:3.14
+FROM ubuntu:20.04
 
-RUN apk add --no-cache tini
+
 
 RUN chmod +x /sbin/tini
 
@@ -13,8 +13,12 @@ ENV _INSTALL_MASSA=$INSTALL_DIR
 
 RUN wget  $ARTIFACT_LINK  && tar -zxvf $ARTIFACT_BIN --directory $INSTALL_DIR
 
-#ENTRYPOINT ["/sbin/tini", "--", "/root/massa/massa-node/massa-node"]
-ENTRYPOINT ["/sbin/tini", "--"]
+# Add Tini
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
+
 
 CMD []
 
