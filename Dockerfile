@@ -2,6 +2,7 @@ FROM alpine:3.14
 
 RUN apk add --no-cache tini
 
+RUN chmod +x /sbin/tini
 
 ARG ARTIFACT_BIN
 ARG ARTIFACT_LINK
