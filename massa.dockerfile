@@ -6,7 +6,7 @@ ARG INSTALL_DIR="/root"
 
 
 
-RUN WGET  $ARTIFACT_LINK  && tar -zxvf $ARTIFACT_BIN --directory $INSTALL_DIR
+RUN wget  $ARTIFACT_LINK  && tar -zxvf $ARTIFACT_BIN --directory $INSTALL_DIR
 
 
 
