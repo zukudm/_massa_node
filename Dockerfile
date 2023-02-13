@@ -16,7 +16,7 @@ ENV _INSTALL_MASSA=$INSTALL_DIR
 RUN wget  $ARTIFACT_LINK  && tar -zxvf $ARTIFACT_BIN --directory $INSTALL_DIR
 
 
-WORKDIR "/root//root/massa/massa-node/"
+# WORKDIR "/root//root/massa/massa-node/"
 
 # Add Tini
 ENV TINI_VERSION v0.19.0
