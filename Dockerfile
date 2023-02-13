@@ -25,7 +25,7 @@ RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--","/root/massa/massa-node/massa-node"]
 
 
-#CMD []
+CMD []
 
 
 
