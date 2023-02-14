@@ -1,0 +1,53 @@
+- name: Install 
+  vars_files: 
+    - vars/vars.yml
+  hosts: "{{ host }}"
+  gather_facts: no
+  become: yes    
+  
+  tasks:
+    
+      - name: Remove old container if exists
+        community.docker.docker_container:
+          name: "{{ container_name }}"
+          state: absent
+
+      - name: Remove an old volume if exists
+        community.docker.docker_volume:
+          name: "{{ volume_name }}"
+          state: absent
+
+      
+          
+
+      
+      - name: Get latest info
+        uri:
+          url: "{{ massa_githubapi_url }}"
+          return_content: true
+        register: massa_info
+
+      - name: Get version 
+        set_fact: checkout_version="{{ massa_info.json.tag_name }}"
+
+      - name: Get download url 
+        set_fact: download_url="{{ massa_info.json.assets[0].browser_download_url}}"  
+
+      - name: Get download url 
+        set_fact: artifact_name="{{ massa_info.json.assets[0].name}}"  
+
+      
+      
+      - name: Print latest checkout_version variable
+        debug:
+          msg: "{{ checkout_version }} {{ download_url }}"  
+
+
+      - name: Create a docker network
+        docker_network:
+          name: "{{ network_name }}"
+
+      # - name: Start the container 
+      #   include_tasks: "playbooks/run_starknet_container.yml"
+
+     
