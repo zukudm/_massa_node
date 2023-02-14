@@ -28,7 +28,7 @@
         register: massa_info
 
       - name: Get version 
-        set_fact: checkout_version="{{ massa_info.json.tag_name }}"
+        set_fact: version="{{ massa_info.json.tag_name }}"
 
       - name: Get download url 
         set_fact: download_url="{{ massa_info.json.assets[0].browser_download_url}}"  
@@ -40,14 +40,25 @@
       
       - name: Print latest checkout_version variable
         debug:
-          msg: "{{ checkout_version }} {{ download_url }}"  
+          msg: "{{ version }} {{ download_url }}"  
 
 
       - name: Create a docker network
         docker_network:
           name: "{{ network_name }}"
 
-      # - name: Start the container 
-      #   include_tasks: "playbooks/run_starknet_container.yml"
+      - name: Build image and with build args
+        community.docker.docker_image:
+          name: "{{ image_name }}"
+          tag: "{{ version }}"
+          state: present
+          force_absent: true
+          build:
+            path: "./"
+            dockerfile: "{{ dockerfile }}"
+            args:
+              ARTIFACT_LINK: "{{ download_url }}"
+              ARTIFACT_BIN: "{{ artifact_name }}"
+          source: build
 
      
