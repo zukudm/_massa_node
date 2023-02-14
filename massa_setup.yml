@@ -78,6 +78,6 @@
           cpu_shares: "{{ cpu_shares }}"
           memory: "{{ memory }}"
           memory_reservation: "{{ memory_reservation }}"   
-          command: ["/root/massa/massa-node/massa-node -p mypassword"]
+          command: ["/root/massa/massa-node/massa-node", "-p", "mypassword"]
 
      
