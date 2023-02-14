@@ -5,8 +5,8 @@ volume_name: massa_volume
 network_name: massa_net
 working_user: ansible
 dockerfile: Dockerfile
-image_name: massa_githubapi_url
-
+image_name: massa
+password: mypassword
 
 source_image_name: eqlabs/pathfinder
 container_mount_point: /usr/share/pathfinder/data
@@ -22,6 +22,9 @@ massa_githubapi_url: https://api.github.com/repos/massalabs/massa/releases/lates
 
 cpus: 1
 cpu_shares: 1024
+memory: 6144m
+memory_reservation: 4098m
+
 
 
 
