@@ -5,7 +5,7 @@ volume_name: massa_volume
 network_name: massa_net
 working_user: ansible
 dockerfile: Dockerfile
-imagename: massa_githubapi_url
+image_name: massa_githubapi_url
 
 
 source_image_name: eqlabs/pathfinder
