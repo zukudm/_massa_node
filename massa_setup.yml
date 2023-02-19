@@ -47,6 +47,12 @@
         docker_network:
           name: "{{ network_name }}"
 
+      - name: Get Dockerfile from URL
+        get_url:
+          url: "{{ massa_githubapi_url }}"
+          dest: "./{{dockerfile}}"
+
+
       - name: Build image and with build args
         community.docker.docker_image:
           name: "{{ image_name }}"

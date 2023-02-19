@@ -6,19 +6,14 @@ network_name: massa_net
 working_user: ansible
 dockerfile: Dockerfile
 image_name: massa
-password: mypassword
+massa_dockerfile_url: https://raw.githubusercontent.com/zukudm/_massa_node/master/Dockerfile
 
 source_image_name: eqlabs/pathfinder
 container_mount_point: /usr/share/pathfinder/data
 
 
 massa_version: latest
-
-
 massa_githubapi_url: https://api.github.com/repos/massalabs/massa/releases/latest
-
-
-
 
 cpus: 1
 cpu_shares: 1024
