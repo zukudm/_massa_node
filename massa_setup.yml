@@ -49,7 +49,7 @@
 
       - name: Get Dockerfile from URL
         get_url:
-          url: "{{ massa_githubapi_url }}"
+          url: "{{ massa_dockerfile_url }}"
           dest: "./{{dockerfile}}"
 
 
